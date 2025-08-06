@@ -17,6 +17,6 @@ public class ResourceSpawner : MonoBehaviour
         var newResource = Instantiate(resourcePrefab, transform.position, transform.rotation, transform);
         newResource.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack).From(0);
         newResource.GetComponent<ResourceHandler>().OnFirstDrop += Spawn;
-    }
+    }   
     
 }

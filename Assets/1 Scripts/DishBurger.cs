@@ -18,6 +18,8 @@ public class DishBurger : MonoBehaviour
     public Burger burger;
     public Vector3 resourcePoint;
     public BoxCollider addTrigger;
+    public BoxCollider collider;
+    private bool isBuy;
     [Header("Drag Settings")]
     [SerializeField] LayerMask layer;
     private bool isGrabbing = false;
@@ -105,10 +107,13 @@ public class DishBurger : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log(other.collider.name);
+        if (isBuy) return;
+        // Debug.Log(other.collider.name);
         if (other.transform.TryGetComponent(out Customer customer))
         {
+            isBuy = true;
             customer.BuyBurger(this);
+            collider.enabled = false;
         }
     }
 }

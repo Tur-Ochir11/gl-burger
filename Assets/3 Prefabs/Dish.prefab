@@ -157,6 +157,7 @@ MonoBehaviour:
     resources: []
   resourcePoint: {x: 0, y: 0.075, z: 0}
   addTrigger: {fileID: 3908559894131374216}
+  collider: {fileID: 8892863688407587219}
   layer:
     serializedVersion: 2
     m_Bits: 64
