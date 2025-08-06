@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,49 +10,72 @@ public class Customer : MonoBehaviour
 
 	private void Start()
 	{
-		wantedBurger = GetNewBurger();
+		wantedBurger = CreateNewBurger();
 		
-		Debug.Log($"<color=orange>WANTED BURGER: {wantedBurger}</color>");
-		for (int i = 0; i < wantedBurger.resources.Count; i++)
-		{
-			Debug.Log($"Burger resource: {wantedBurger.resources[i].type}");
-			
-		}
+		// Debug.Log($"<color=orange>WANTED BURGER: {wantedBurger}</color>");
+		// for (int i = 0; i < wantedBurger.resources.Count; i++)
+		// {
+		// 	Debug.Log($"Burger resource: {wantedBurger.resources[i].type}");
+		// }
 	}
 
 	//VISUALIZE WANTED BURGER
-    public Burger GetNewBurger()
+    public Burger CreateNewBurger()
     {
 	    List<Resource> resources = new List<Resource>();
-	    Resource newResource = new Resource(ResourceType.BreadBottom);
-	    resources.Add(newResource);
+	    Resource BreadBottom = new Resource(ResourceType.BreadBottom);
+	    resources.Add(BreadBottom);
 	    
-	    Resource newResource2 = new Resource(ResourceType.Cheese);
-	    AddNewResource(newResource2, resources);
-	    Resource newResource3 = new Resource(ResourceType.Onion);
-	    AddNewResource(newResource3, resources);
-	    Resource newResource4 = new Resource(ResourceType.Meat);
-	    AddNewResource(newResource4, resources);
-	    Resource newResource5 = new Resource(ResourceType.Lettuce);
-	    AddNewResource(newResource5, resources);
-	    Resource newResource6 = new Resource(ResourceType.Tomato);
-	    AddNewResource(newResource6, resources);
+	    Resource Cheese = new Resource(ResourceType.Cheese);
+	    AddNewResource(Cheese, resources);
+	    Resource Onion = new Resource(ResourceType.Onion);
+	    AddNewResource(Onion, resources);
+	    Resource Meat = new Resource(ResourceType.Meat);
+	    AddNewResource(Meat, resources, 0.75f);
+	    Resource Lettuce = new Resource(ResourceType.Lettuce);
+	    AddNewResource(Lettuce, resources);
+	    Resource Tomato = new Resource(ResourceType.Tomato);
+	    AddNewResource(Tomato, resources);
 	    
-	    Resource newResource7 = new Resource(ResourceType.BreadTop);
-	    resources.Add(newResource7);
+	    Resource BreadTop = new Resource(ResourceType.BreadTop);
+	    resources.Add(BreadTop);
 
 	    Burger burger = new Burger(resources);
 	    return burger;
     }
 
-    private void AddNewResource(Resource newResource, List<Resource> resources)
+    private void AddNewResource(Resource newResource, List<Resource> resources, float chance = 0.5f)
     {
 	    float r = Random.value;
-	    if (r < 0.5f)
+	    if (r < chance)
 	    {
 		    resources.Add(newResource);
 	    }
     }
     //IF WAIT LONG TIME ANGRY
     //BUY BURGER
+    public void BuyBurger(DishBurger dishBurger)
+    {
+	    if (Utilities.AreSameBurgers(dishBurger.burger, wantedBurger))
+	    {
+		    Debug.Log("<color=green>Same Burger</color>");
+		    Debug.Log("Giving money");
+		    dishBurger.transform.DOScale(0, 0.3f).SetEase(Ease.InBack).OnComplete((() =>
+		    {
+			    Destroy(dishBurger.gameObject, 0.1f);
+			    Exit();
+		    }));
+		    
+	    }
+	    else
+	    {
+		    Debug.Log("<color=red>Not Same Burger</color>");
+	    }
+    }
+
+    public void Exit()
+    {
+	    //NAV MESH SET DESTINATION
+	    Destroy(gameObject, 0.1f);
+    }
 }

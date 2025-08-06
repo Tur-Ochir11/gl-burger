@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 public class Resource
@@ -28,6 +29,9 @@ public class ResourceHandler : MonoBehaviour
     private bool isGrabbing = false;
     private Vector3 hitPoint;
     private Collider collider;
+    
+    public UnityAction OnFirstDrop;
+    private bool firstDrop = false;
 
     private void Awake()
     {
@@ -83,6 +87,12 @@ public class ResourceHandler : MonoBehaviour
         isGrabbing = false;
         rb.isKinematic = false;
         outline.enabled = false;
+
+        if (!firstDrop)
+        {
+            OnFirstDrop?.Invoke();
+            firstDrop = true;
+        }
     }
 
     public void SetParent(Transform parent)
