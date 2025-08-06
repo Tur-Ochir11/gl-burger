@@ -31,7 +31,7 @@ public class Customer : MonoBehaviour
 		// Debug.Log($"<color=orange>WANTED BURGER: {wantedBurger}</color>");
 		// for (int i = 0; i < wantedBurger.resources.Count; i++)
 		// {
-		// 	Debug.Log($"Burger resource: {wantedBurger.resources[i].type}");
+		// 		Debug.Log($"Burger resource: {wantedBurger.resources[i].type}");
 		// }
 	}
 
@@ -62,6 +62,7 @@ public class Customer : MonoBehaviour
 
     private void CreateBurgerUI()
     {
+	    gridLayoutGroup.gameObject.SetActive(true);
 	    for (int i = 0; i < wantedBurger.resources.Count; i++)
 	    {
 		    var img = Instantiate(imagePrefab, gridLayoutGroup.transform);
