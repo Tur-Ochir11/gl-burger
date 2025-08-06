@@ -71,7 +71,12 @@ PrefabInstance:
     - target: {fileID: 5725517810482456797, guid: c598179255379ce46bb7200611907391,
         type: 3}
       propertyPath: offsetUp.y
-      value: 1
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725517810482456797, guid: c598179255379ce46bb7200611907391,
+        type: 3}
+      propertyPath: resource.type
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6280197605636038814, guid: c598179255379ce46bb7200611907391,
         type: 3}
@@ -79,6 +84,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4306084334228936827, guid: 20d8de54cafeb6c4a8dc7d96348313c2,
         type: 3}
+    - target: {fileID: 8014373346869608175, guid: c598179255379ce46bb7200611907391,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 8014373346869608175, guid: c598179255379ce46bb7200611907391,
         type: 3}
       propertyPath: m_LocalRotation.w

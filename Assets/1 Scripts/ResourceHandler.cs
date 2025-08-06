@@ -3,9 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Resource : MonoBehaviour
+[Serializable]
+public class Resource
 {
     public ResourceType type;
+
+    public Resource(ResourceType newType)
+    {
+        type = newType;
+    }
+}
+
+public class ResourceHandler : MonoBehaviour
+{
+    public Resource resource;
+    
     public Vector3 offsetUp;
     [Header("Drag settings")]
     [SerializeField] LayerMask layer;

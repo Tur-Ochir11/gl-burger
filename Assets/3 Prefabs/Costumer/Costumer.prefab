@@ -221,6 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 493790306625475016}
+  - component: {fileID: 7280278896246097704}
   m_Layer: 0
   m_Name: Costumer
   m_TagString: Untagged
@@ -245,3 +246,16 @@ Transform:
   - {fileID: 8934896056122680176}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7280278896246097704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718924494030861372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba4288b7cc741b2bd692750efe22ba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wantedBurger: {fileID: 0}
